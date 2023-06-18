@@ -3,7 +3,8 @@ import numpy as np
 import streamlit as st
 from st_pages import Page, show_pages, add_page_title
 
-st.set_page_config(layout="wide", page_title="Interactive SQL")
+#st.set_page_config(layout="wide", page_title="Interactive SQL")
+
 show_pages(
     [
         Page("main.py", "What are SQL Queries?", "🤔"),
@@ -12,7 +13,10 @@ show_pages(
         Page("pages/data_exploration.py", "SQL Data Exploration", ":rocket:")
     ]
 )
+
 st.title('🤔 What are SQL Queries?')
+
+# Make sidebar reusable
 
 dataset = st.sidebar.selectbox(
     "Dataset",
@@ -37,22 +41,41 @@ conn = st.experimental_connection(
 )
 
 
-st.write("SQL is a language for querying data from relational databases.")
-st.write("It is a powerful tool that can be used to extract, transform, and analyze data.")
-st.write("SQL queries are made up of statements that are executed by the database server.")
-st.write("The most common types of SQL statements are SELECT, INSERT, UPDATE, and DELETE.")
+st.subheader('What is SQL?')
+st.write('Structured Query Language (SQL) is a language used to manage data in a database.')
+st.write('SQL is used for a variety of tasks, including:')
+st.write('* Creating and managing databases')
+st.write('* Inserting, updating, and deleting data')
+st.write('* Retrieving data from databases')
 
-st.markdown("""
-    The `SELECT` statement is used to retrieve data from a database.
-    The `INSERT` statement is used to add new data to a database.
-    The `UPDATE` statement is used to modify existing data in a database.
-    The `DELETE` statement is used to delete data from a database.
-""")
+st.subheader('Why is SQL used for data analytics?')
+st.write('SQL is a powerful tool for data analytics because it allows you to easily retrieve and manipulate data from databases.')
+st.write('This makes it possible to perform complex queries, such as joins and aggregations, to get the insights you need.')
 
-st.write("Here is an example of a simple SQL query:")
-st.code("SELECT * FROM covid_cases;")
-st.write("This query will return all of the rows in the `covid_cases` table.")
+st.subheader('How does a SQL query look like?')
+st.write('A SQL query is a series of statements that are used to interact with a database.')
+st.write('Each statement is made up of keywords and values.')
+st.write('For example, the following query selects all of the rows from the `customers` table:')
+st.code('SELECT * FROM customers;', language='sql')
 
+st.subheader('What is a schema?')
+st.write('A schema is a blueprint for a database. It defines the tables, columns, and data types that are stored in the database.')
+st.write('The schema is used to ensure that the data in the database is consistent and organized.')
+
+st.subheader('Basic syntax of SQL queries')
+st.write('The basic syntax of a SQL query is as follows:')
+# st.write('```sql
+# SELECT [columns]
+# FROM [table]
+# [WHERE [conditions]]
+# [ORDER BY [column]]
+# ```')
+
+st.subheader('Benefits of SQL')
+st.write('There are many benefits to using SQL for data analytics, including:')
+st.write('* It is a standard language, so it is portable across different databases.')
+st.write('* It is a powerful language that can be used to perform complex queries.')
+st.write('* It is a relatively easy language to learn.')
 
 
 st.subheader("Try it out!")

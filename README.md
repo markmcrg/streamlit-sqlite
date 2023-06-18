@@ -1,4 +1,4 @@
-# streamlit-sqlite
+# Hands-on SQL Tutorial Using Streamlit
 An interactive SQL demonstration by using sqlite3 in streamlit.
 
 ## Preview 
