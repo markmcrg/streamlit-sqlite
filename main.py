@@ -26,13 +26,13 @@ st.sidebar.subheader('Schema')
 # Add Description
 if dataset == "COVID-19 Cases in the Philippines":
     db_file = "datasets/ph_covid_cases.db"
-    st.sidebar.image("schema-png\covid_cases_schema.png", width=225)
+    st.sidebar.image("schema-png/covid_cases_schema.png", width=225)
 elif dataset == "Dengue Cases in the Philippines":
     db_file = "datasets/ph_dengue_cases.db"
-    st.sidebar.image("schema-png\dengue_cases_schema.png")
+    st.sidebar.image("schema-png/dengue_cases_schema.png")
 elif dataset == "Active Volcanoes in the Philippines":
     db_file = "datasets/ph_volcanoes.db"
-    st.sidebar.image("schema-png\\volcanoes_schema.png")
+    st.sidebar.image("schema-png/volcanoes_schema.png")
 
 conn = st.experimental_connection(
     "dataset",
