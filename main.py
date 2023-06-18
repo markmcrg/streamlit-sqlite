@@ -8,7 +8,7 @@ from st_pages import Page, show_pages, add_page_title
 show_pages(
     [
         Page("main.py", "What are SQL Queries?", "🤔"),
-        Page("pages/Basic_SQL_queries.py", "Basic SQL Queries", ":star:"),
+        Page("pages/Basic_SQL_Queries.py", "Basic SQL Queries", ":star:"),
         Page("pages/more_sql_queries.py", "More SQL Queries!", ":fire:"),
         Page("pages/data_exploration.py", "SQL Data Exploration", ":rocket:")
     ]
