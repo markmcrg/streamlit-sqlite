@@ -35,12 +35,6 @@ def generate_sidebar(key):
 
 db_file = generate_sidebar("main")
 
-conn = st.experimental_connection(
-    "dataset",
-    type="sql",
-    url="sqlite:///" + db_file,
-)
-
 st.title("🤔 What are SQL Queries?")
 
 st.subheader("💡 What is SQL? ")
@@ -73,16 +67,26 @@ query = st.text_area('Input Query', placeholder='Enter query')
 if st.button('Query'):
     try:
         st.write('Result:')
+        conn = st.experimental_connection(
+            "dataset",
+            type="sql",
+            url="sqlite:///" + db_file,
+        )
         df = conn.query(query)
         st.dataframe(df, hide_index=True)
     except Exception as e:
         st.exception(e)
 
-def small_query_box(keyword):
+def small_query_box(keyword, db_file):
     query = st.text_area('**✅ Try it out!**', placeholder='Enter query', key=keyword)
     if st.button('Query', key=keyword+"button"):
-        try:
+        try: 
             st.write('Result:')
+            conn = st.experimental_connection(
+                "dataset",
+                type="sql",
+                url="sqlite:///" + db_file,
+            )
             df = conn.query(query)
             st.dataframe(df, hide_index=True)
         except Exception as e:
