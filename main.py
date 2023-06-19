@@ -9,7 +9,6 @@ show_pages(
     [
         Page("main.py", "What are SQL Queries?", "🤔"),
         Page("pages/Basic_SQL_Queries.py", "Basic SQL Queries", ":star:"),
-        Page("pages/more_sql_queries.py", "More SQL Queries!", ":fire:"),
         Page("pages/data_exploration.py", "SQL Data Exploration", ":rocket:")
     ]
 )

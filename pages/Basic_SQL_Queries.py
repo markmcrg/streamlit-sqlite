@@ -63,4 +63,43 @@ with st.expander("**AS**"):
     st.write("For example, the following query would select the `name` column and rename it to `customer_name`:")
     st.code("SELECT name AS customer_name FROM customers;", language="sql")
     small_query_box("AS")
+    
+    
+st.write("")
+st.subheader("💫 More SQL Queries!")
+with st.expander("**DISTINCT**"):
+    st.write("The `DISTINCT` keyword is used to remove duplicate rows from the results of a query.")
+    st.write("For example, the following query would select all the distinct values in the `customer_name` column:")
+    st.code("SELECT DISTINCT customer_name FROM customers;", language="sql") #lanuage sql and add query box and bold all
+    small_query_box("DISTINCT")
+    
+with st.expander("**MIN/MAX**"):
+    st.write("The `MIN` and `MAX` keywords are used to return the minimum and maximum values in a column.")
+    st.write("For example, the following query would return the minimum and maximum values in the `customer_id` column:")
+    st.code("SELECT MIN(customer_id), MAX(customer_id) FROM customers;", language="sql") 
+    small_query_box("MINMAX")
+    
+with st.expander("**AVG**"):
+    st.write("The `AVG` keyword is used to return the average value in a column.")
+    st.write("For example, the following query would return the average value in the `customer_age` column:")
+    st.code("SELECT AVG(customer_age) FROM customers;", language="sql") 
+    small_query_box("AVG")
+    
+with st.expander("**COUNT**"):
+    st.write("The `COUNT` keyword is used to return the number of rows in a table.")
+    st.write("For example, the following query would return the number of rows in the `customers` table:")
+    st.code("SELECT COUNT(*) FROM customers;", language="sql") 
+    small_query_box("COUNT")
+    
+with st.expander("**SUM**"):
+    st.write("The `SUM` keyword is used to return the sum of the values in a column.")
+    st.write("For example, the following query would return the sum of the values in the `customer_spend` column:")
+    st.code("SELECT SUM(customer_spend) FROM customers;", language="sql") 
+    small_query_box("SUM")
+    
+with st.expander("**LIKE**"):
+    st.write("The `LIKE` keyword is used to match a pattern in a column.")
+    st.write("For example, the following query would select all the rows where the `customer_name` column contains the string `John`:")
+    st.code("SELECT * FROM customers WHERE customer_name LIKE '%John%';", language="sql") 
+    small_query_box("LIKE")
 
