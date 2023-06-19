@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 from st_pages import Page, show_pages, add_page_title
 
-#st.set_page_config(layout="wide", page_title="Interactive SQL")
+st.set_page_config(layout="wide", page_title="Interactive SQL")
 
 show_pages(
     [
@@ -15,22 +15,26 @@ show_pages(
 )
 
 # Make sidebar reusable
+def generate_sidebar(key):
+    dataset = st.sidebar.selectbox(
+        "**Dataset**",
+        ("COVID-19 Cases in the Philippines", "Dengue Cases in the Philippines", "Active Volcanoes in the Philippines"),
+        key=key
+    )
+    st.sidebar.subheader('Schema')
+    if dataset == "COVID-19 Cases in the Philippines":
+        db_file = "datasets/ph_covid_cases.db"
+        st.sidebar.image("schema-png/covid_cases_schema.png", width=225)
+    elif dataset == "Dengue Cases in the Philippines":
+        db_file = "datasets/ph_dengue_cases.db"
+        st.sidebar.image("schema-png/dengue_cases_schema.png")
+    elif dataset == "Active Volcanoes in the Philippines":
+        db_file = "datasets/ph_volcanoes.db"
+        st.sidebar.image("schema-png/volcanoes_schema.png")
+        
+    return db_file
 
-dataset = st.sidebar.selectbox(
-    "Dataset",
-    ("COVID-19 Cases in the Philippines", "Dengue Cases in the Philippines", "Active Volcanoes in the Philippines")
-)
-st.sidebar.subheader('Schema') 
-# Add Description
-if dataset == "COVID-19 Cases in the Philippines":
-    db_file = "datasets/ph_covid_cases.db"
-    st.sidebar.image("schema-png/covid_cases_schema.png", width=225)
-elif dataset == "Dengue Cases in the Philippines":
-    db_file = "datasets/ph_dengue_cases.db"
-    st.sidebar.image("schema-png/dengue_cases_schema.png")
-elif dataset == "Active Volcanoes in the Philippines":
-    db_file = "datasets/ph_volcanoes.db"
-    st.sidebar.image("schema-png/volcanoes_schema.png")
+db_file = generate_sidebar("main")
 
 conn = st.experimental_connection(
     "dataset",
@@ -63,7 +67,7 @@ st.write("* 📖 It is easy to learn.")
 st.write("* 📉 It is a declarative language, meaning that you can focus on what you want to do rather than how to do it.")
 st.write("* 🌎 It is widely supported by databases.")
 
-st.subheader("Try it out!")
+st.subheader("✅ Try it out!")
 
 query = st.text_area('Input Query', placeholder='Enter query')
 
@@ -74,6 +78,16 @@ if st.button('Query'):
         st.dataframe(df, hide_index=True)
     except Exception as e:
         st.exception(e)
+
+def small_query_box(keyword):
+    query = st.text_area('**✅ Try it out!**', placeholder='Enter query', key=keyword)
+    if st.button('Query', key=keyword+"button"):
+        try:
+            st.write('Result:')
+            df = conn.query(query)
+            st.dataframe(df, hide_index=True)
+        except Exception as e:
+            st.exception(e)
         
 st.write("This is just a brief introduction to SQL queries. For more information, please visit the following resources:")
 st.write("* 🔗 [SQL Tutorial](https://www.w3schools.com/sql/)")
