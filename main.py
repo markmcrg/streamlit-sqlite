@@ -14,8 +14,6 @@ show_pages(
     ]
 )
 
-st.title('🤔 What are SQL Queries?')
-
 # Make sidebar reusable
 
 dataset = st.sidebar.selectbox(
@@ -40,43 +38,30 @@ conn = st.experimental_connection(
     url="sqlite:///" + db_file,
 )
 
+st.title("🤔 What are SQL Queries?")
 
-st.subheader('What is SQL?')
-st.write('Structured Query Language (SQL) is a language used to manage data in a database.')
-st.write('SQL is used for a variety of tasks, including:')
-st.write('* Creating and managing databases')
-st.write('* Inserting, updating, and deleting data')
-st.write('* Retrieving data from databases')
+st.subheader("💡 What is SQL? ")
+st.write("SQL stands for Structured Query Language. It is a language used to communicate with databases.")
 
-st.subheader('Why is SQL used for data analytics?')
-st.write('SQL is a powerful tool for data analytics because it allows you to easily retrieve and manipulate data from databases.')
-st.write('This makes it possible to perform complex queries, such as joins and aggregations, to get the insights you need.')
+st.subheader("📊 Why is SQL used for data analytics? ")
+st.write("SQL is used for data analytics because it allows you to extract data from databases and manipulate it in a way that is easy to understand and analyze.")
 
-st.subheader('How does a SQL query look like?')
-st.write('A SQL query is a series of statements that are used to interact with a database.')
-st.write('Each statement is made up of keywords and values.')
-st.write('For example, the following query selects all of the rows from the `customers` table:')
-st.code('SELECT * FROM customers;', language='sql')
+st.subheader("🧐 How a SQL Query looks like")
+st.write("A SQL query is a set of instructions that tells the database what data you want to extract and how you want to manipulate it.")
+st.write("Here is an example of a simple SQL query:")
+st.code("SELECT * FROM customers;", language='sql')
+st.write("💾 This query will select all of the rows from the `customers` table.")
 
-st.subheader('What is a schema?')
-st.write('A schema is a blueprint for a database. It defines the tables, columns, and data types that are stored in the database.')
-st.write('The schema is used to ensure that the data in the database is consistent and organized.')
+st.subheader("🗺️ What is a schema and why is it important?")
+st.write("A schema is a blueprint of a database. It defines the structure of the database, including the tables, columns, and data types.")
+st.write("Schemas are important because they help to ensure that the data in a database is organized and consistent.")
 
-st.subheader('Basic syntax of SQL queries')
-st.write('The basic syntax of a SQL query is as follows:')
-# st.write('```sql
-# SELECT [columns]
-# FROM [table]
-# [WHERE [conditions]]
-# [ORDER BY [column]]
-# ```')
-
-st.subheader('Benefits of SQL')
-st.write('There are many benefits to using SQL for data analytics, including:')
-st.write('* It is a standard language, so it is portable across different databases.')
-st.write('* It is a powerful language that can be used to perform complex queries.')
-st.write('* It is a relatively easy language to learn.')
-
+st.subheader("🚀 Benefits of SQL")
+st.write("There are many benefits to using SQL for data analytics, including:")
+st.write("* 🛠️ It is a powerful and versatile language.")
+st.write("* 📖 It is easy to learn.")
+st.write("* 📉 It is a declarative language, meaning that you can focus on what you want to do rather than how to do it.")
+st.write("* 🌎 It is widely supported by databases.")
 
 st.subheader("Try it out!")
 
@@ -90,6 +75,7 @@ if st.button('Query'):
     except Exception as e:
         st.exception(e)
         
-st.write("For more information about SQL, please visit the following resources:")
-st.write("* [The official SQL tutorial](https://www.w3schools.com/sql/)")
-st.write("* [The SQL documentation](https://www.sqlite.org/docs.html)")
+st.write("This is just a brief introduction to SQL queries. For more information, please visit the following resources:")
+st.write("* 🔗 [SQL Tutorial](https://www.w3schools.com/sql/)")
+st.write("* 📘 [SQL Reference](https://www.w3schools.com/sql/sql_ref_keywords.asp)")
+st.write("* 📃 [SQL Cheat Sheet](https://www.w3schools.com/sql/sql_cheatsheet.asp)")
