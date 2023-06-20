@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from st_pages import Page, show_pages, add_page_title
-
+from sqlalchemy.exc import ResourceClosedError
 st.set_page_config(layout="wide", page_title="Interactive SQL")
 
 show_pages(
@@ -15,21 +15,22 @@ show_pages(
 
 # Make sidebar reusable
 def generate_sidebar(key):
+    st.sidebar.subheader("bit.ly/interactive-sql")
     dataset = st.sidebar.selectbox(
         "**Dataset**",
-        ("COVID-19 Cases in the Philippines", "Dengue Cases in the Philippines", "Active Volcanoes in the Philippines"),
+        ("Dengue Cases in the Philippines", "COVID-19 Cases in the Philippines",  "Active Volcanoes in the Philippines"),
         key=key
     )
+        
     st.sidebar.subheader('Schema')
     if dataset == "COVID-19 Cases in the Philippines":
         db_file = "datasets/ph_covid_cases.db"
-        st.sidebar.image("schema-png/covid_cases_schema.png", width=225)
     elif dataset == "Dengue Cases in the Philippines":
-        db_file = "datasets/ph_dengue_cases.db"
-        st.sidebar.image("schema-png/dengue_cases_schema.png")
+        db_file = "datasets/ph_dengue_cases.db" 
+        st.sidebar.image("schema-png/dengue_cases_schema.png") 
     elif dataset == "Active Volcanoes in the Philippines":
         db_file = "datasets/ph_volcanoes.db"
-        st.sidebar.image("schema-png/volcanoes_schema.png")
+        st.sidebar.image("schema-png/volcanoes_schema.png") 
         
     return db_file
 
@@ -89,6 +90,8 @@ def small_query_box(keyword, db_file):
             )
             df = conn.query(query)
             st.dataframe(df, hide_index=True)
+        except ResourceClosedError:
+            st.write("No returned rows.")
         except Exception as e:
             st.exception(e)
         
